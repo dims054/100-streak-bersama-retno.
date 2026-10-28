@@ -95,7 +95,7 @@ footer{text-align:center;color:#a48e88;font-size:.76rem;padding:0 0 26px}
     <div class="kicker">seratus hari dari hal-hal sederhana</div>
     <h1>100 Streak<br><em>Bersama Retno</em></h1>
     <p>Hai, Retno. Nggak terasa, kebiasaan kecil untuk saling mengirim video sampai juga di angka 100. Aku membuat halaman sederhana ini untuk merayakannya dan menyimpan dua potongan momen yang pernah kita lewati.</p>
-    <a class="btn" href="#cerita">♡ Buka halaman kecil ini</a>
+    <a class="btn" id="openPageButton" href="#cerita">♡ Buka halaman kecil ini</a>
     <div class="scrollhint">pelan-pelan saja, lihat sampai bawah ↓</div>
     <div class="music-card" aria-label="Musik Sau Tất Cả versi harmonika">
       <div class="music-icon" aria-hidden="true">♫</div>
@@ -110,7 +110,7 @@ footer{text-align:center;color:#a48e88;font-size:.76rem;padding:0 0 26px}
         <span class="muted" style="font-size:.75rem">♪ instrumental</span>
       </div>
     </div>
-    <div class="music-status" id="musicStatus" role="status" aria-live="polite">Mencoba memutar musik otomatis. Jika tidak terdengar, tekan tombol Putar.</div>
+    <div class="music-status" id="musicStatus" role="status" aria-live="polite">Jika musik tidak otomatis terdengar, ketuk “Buka halaman kecil ini” atau tombol Putar.</div>
   </header>
 
   <main>
@@ -228,6 +228,20 @@ musicVolume.addEventListener('input',()=>{music.volume=Number(musicVolume.value)
 music.addEventListener('playing',()=>{musicStatus.textContent='Musik sedang diputar.';syncMusicButton()});
 music.addEventListener('pause',syncMusicButton);
 music.addEventListener('error',()=>{musicStatus.textContent='File musik tidak ditemukan. Letakkan sau-tat-ca-harmonica.mp3 di folder yang sama dengan index.html.';syncMusicButton()});
+
+/* Coba mulai musik saat tombol pembuka disentuh; ini adalah interaksi pengguna. */
+const openPageButton=document.getElementById('openPageButton');
+openPageButton.addEventListener('click',()=>{
+  if (!music.paused) return;
+  music.play().then(()=>{
+    musicStatus.textContent='Musik sedang diputar.';
+    syncMusicButton();
+  }).catch(()=>{
+    musicStatus.textContent='Musik belum mulai? Tekan tombol Putar untuk mendengarkan.';
+    syncMusicButton();
+  });
+});
+
 window.addEventListener('load',async()=>{
  try{await music.play();musicStatus.textContent='Musik sedang diputar.'}
  catch(err){musicStatus.textContent='Browser memblokir autoplay. Tekan Putar untuk mendengarkan musik.'}
