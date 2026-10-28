@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff7f3">
+<meta name="description" content="Sebuah halaman kecil untuk merayakan 100 streak dan mengenang momen-momen baik.">
+<title>100 Streak Bersama Retno ♡ | Sau Tất Cả - Harmonica Cover</title>
+<style>
+:root{
+ --bg:#fff8f4;--paper:rgba(255,253,250,.86);--ink:#4b3b3a;--muted:#8d7777;
+ --rose:#bd7784;--rose-deep:#a85e6d;--pink:#f3d9dc;--peach:#f8e4d8;--sage:#b7c2ae;
+ --line:#f0dfd9;--shadow:0 18px 60px rgba(111,67,73,.11)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;color:var(--ink);background:
+ radial-gradient(ellipse at 12% 6%,#f9e5dd 0,transparent 29rem),
+ radial-gradient(ellipse at 91% 28%,#f6e5ec 0,transparent 28rem),
+ radial-gradient(ellipse at 50% 90%,#f8eadc 0,transparent 30rem),var(--bg);
+ font-family:ui-rounded,"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.75;overflow-x:hidden}
+a{color:inherit}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.floaty{position:absolute;bottom:-45px;opacity:0;color:#d99ba6;animation:rise var(--dur,12s) linear infinite;animation-delay:var(--delay,0s);font-size:var(--size,18px);filter:drop-shadow(0 2px 5px #b8798420)}
+@keyframes rise{0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}10%{opacity:.48}80%{opacity:.35}100%{transform:translate3d(var(--drift,25px),-115vh,0) rotate(35deg);opacity:0}}
+.wrap{width:min(920px,calc(100% - 32px));margin:auto;position:relative;z-index:1}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:20px 0;color:var(--muted);font-size:.82rem}
+.brand{font-weight:850;letter-spacing:.08em;color:var(--rose-deep)}
+.badge{border:1px solid #e9c9ce;border-radius:999px;padding:5px 12px;background:#fffaf8}
+.hero{text-align:center;padding:55px 0 54px;position:relative}
+.flame{display:grid;place-items:center;width:88px;height:88px;margin:0 auto 23px;border-radius:30px;background:linear-gradient(145deg,#fff,#ffe7df);box-shadow:var(--shadow);font-size:2.6rem;transform:rotate(-5deg);animation:flameBob 3.8s ease-in-out infinite}
+@keyframes flameBob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.kicker{text-transform:uppercase;letter-spacing:.19em;font-size:.72rem;font-weight:850;color:var(--rose-deep)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.15}
+h1{font-size:clamp(2.8rem,9vw,5.3rem);letter-spacing:-.055em;margin:15px 0 20px}
+h1 em{color:var(--rose);font-weight:400}
+.hero p{max-width:590px;margin:0 auto;color:var(--muted);font-size:1.03rem}
+.btn{display:inline-flex;align-items:center;gap:9px;margin-top:27px;border-radius:999px;background:var(--rose-deep);color:white;text-decoration:none;padding:12px 22px;font-size:.92rem;font-weight:750;box-shadow:0 9px 25px #b96e7d35;transition:transform .22s,box-shadow .22s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 30px #b96e7d40}
+.scrollhint{font-size:.75rem;color:#a89190;margin-top:18px;letter-spacing:.06em}
+.music-card{width:min(510px,100%);margin:27px auto 0;padding:14px 17px;border:1px solid #efd9d9;border-radius:20px;background:#fffaf8d9;box-shadow:0 10px 28px rgba(111,67,73,.07);display:flex;align-items:center;gap:13px;text-align:left}
+.music-icon{flex:0 0 42px;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#f6e4df);font-size:1.2rem}
+.music-copy{min-width:0;flex:1}.music-copy strong{display:block;font-size:.88rem;color:var(--ink);line-height:1.35}.music-copy span{display:block;font-size:.76rem;color:var(--muted);line-height:1.45;margin-top:3px}
+.music-button{flex:0 0 auto;border:0;border-radius:999px;background:var(--rose-deep);color:white;font:inherit;font-size:.8rem;font-weight:750;padding:9px 13px;cursor:pointer;min-width:83px}.music-button:focus-visible{outline:3px solid #d9a7b1;outline-offset:3px}
+.music-status{font-size:.72rem;color:var(--muted);text-align:center;margin:7px auto 0;max-width:470px}.music-player{width:min(510px,100%);margin:16px auto 0;padding:14px 16px;border:1px solid #efd9d9;border-radius:18px;background:#fffdf9;box-shadow:0 10px 28px rgba(111,67,73,.07)}.music-player audio{display:none}.music-controls{display:flex;align-items:center;gap:12px}.music-controls .music-button{min-width:98px}.music-volume{width:100px;accent-color:var(--rose-deep)}
+section{margin:25px 0}
+.panel{background:var(--paper);border:1px solid #fff;border-radius:28px;padding:clamp(23px,5vw,42px);box-shadow:var(--shadow);backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.panel:before{content:"";position:absolute;top:0;left:30px;right:30px;height:1px;background:linear-gradient(90deg,transparent,#ecc9cb,transparent)}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.17em;font-weight:850;color:var(--rose)}
+h2{font-size:clamp(1.85rem,5vw,2.65rem);margin:9px 0 16px;letter-spacing:-.025em}
+.copy{color:#675451;margin:0}
+.muted{color:var(--muted)}
+.ornament{text-align:center;color:#dba5ac;letter-spacing:.55em;margin:21px 0}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
+.photo{min-width:0}
+.frame{position:relative;overflow:hidden;aspect-ratio:4/5;border:8px solid white;border-radius:8px;background:linear-gradient(145deg,#f7e3db,#eadbe4);box-shadow:0 10px 28px #6a4b4416;transform:rotate(-1.3deg);transition:transform .35s,box-shadow .35s}
+.photo:nth-child(2) .frame{transform:rotate(1.3deg)}
+.frame:hover{transform:rotate(0) translateY(-4px);box-shadow:0 18px 36px #6a4b4420}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:14px;color:#986b75;background:linear-gradient(145deg,#f7e6df,#f0e2e9);font-size:.9rem}
+.placeholder strong{font-size:2.3rem;font-weight:400;margin-bottom:8px}
+.caption{text-align:center;font-size:.88rem;color:var(--muted);padding:12px 4px 0}
+.caption b{display:block;color:var(--rose-deep);font-weight:750;margin-bottom:3px}
+.quote{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.25rem,3.6vw,1.75rem);line-height:1.65;text-align:center;margin:0}
+.quote em{color:var(--rose-deep);font-style:normal}
+.prayer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:24px}
+.prayer{padding:18px;border:1px solid #f0e0da;background:#fffaf7;border-radius:18px}
+.prayer .symbol{font-size:1.25rem;margin-bottom:5px}
+.prayer h3{font-family:inherit;font-weight:800;font-size:.96rem;margin:0 0 5px;color:var(--rose-deep)}
+.prayer p{font-size:.9rem;color:#766361;margin:0}
+.end{text-align:center;padding:45px 12px 65px}
+.end .flower{font-size:2rem;display:inline-block;animation:flowerSway 4s ease-in-out infinite}
+@keyframes flowerSway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.end h2{margin-top:12px}
+.end p{max-width:610px;margin:12px auto;color:var(--muted)}
+.signature{display:inline-block;margin-top:15px;padding:8px 15px;border-radius:999px;background:#fffaf6;border:1px solid var(--line);color:var(--rose-deep);font-size:.82rem}
+footer{text-align:center;color:#a48e88;font-size:.76rem;padding:0 0 26px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.heart-button{position:fixed;right:17px;bottom:17px;z-index:7;border:1px solid #edd4d5;background:#fffaf8e8;color:var(--rose-deep);width:46px;height:46px;border-radius:50%;font-size:1.2rem;box-shadow:0 8px 24px #6a4b4418;cursor:pointer;transition:transform .2s}
+.heart-button:hover{transform:scale(1.08)}
+#littleNote{position:fixed;left:50%;bottom:23px;transform:translate(-50%,18px);background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:13px 18px;box-shadow:var(--shadow);font-size:.9rem;color:var(--ink);text-align:center;width:min(340px,calc(100% - 32px));z-index:8;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#littleNote.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:620px){.hero{padding:42px 0}.gallery{gap:12px}.frame{aspect-ratio:3/4}.panel{border-radius:23px}.prayer-grid{grid-template-columns:1fr}.topbar{font-size:.74rem}.gallery{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto}.frame{aspect-ratio:4/3}.caption{padding-top:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="topbar"><div class="brand">SEBUAH HALAMAN KECIL ♡</div><div class="badge">100 streak 🔥</div></div>
+
+  <header class="hero">
+    <div class="flame" aria-hidden="true">🔥</div>
+    <div class="kicker">seratus hari dari hal-hal sederhana</div>
+    <h1>100 Streak<br><em>Bersama Retno</em></h1>
+    <p>Hai, Retno. Nggak terasa, kebiasaan kecil untuk saling mengirim video sampai juga di angka 100. Aku membuat halaman sederhana ini untuk merayakannya dan menyimpan dua potongan momen yang pernah kita lewati.</p>
+    <a class="btn" href="#cerita">♡ Buka halaman kecil ini</a>
+    <div class="scrollhint">pelan-pelan saja, lihat sampai bawah ↓</div>
+    <div class="music-card" aria-label="Musik Sau Tất Cả versi harmonika">
+      <div class="music-icon" aria-hidden="true">♫</div>
+      <div class="music-copy"><strong>Sau Tất Cả (ERIK) — Harmonica Cover</strong><span>Cover harmonika oleh Khôi Harmonica</span></div>
+      <button class="music-button" id="musicToggle" type="button" aria-label="Putar musik">▶ Putar</button>
+    </div>
+    <div class="music-player">
+      <audio id="backgroundMusic" src="sau-tat-ca-harmonica.mp3" autoplay loop preload="auto"></audio>
+      <div class="music-controls">
+        <span style="font-size:.8rem;color:var(--muted);white-space:nowrap">Volume</span>
+        <input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.35" aria-label="Atur volume musik">
+        <span class="muted" style="font-size:.75rem">♪ instrumental</span>
+      </div>
+    </div>
+    <div class="music-status" id="musicStatus" role="status" aria-live="polite">Mencoba memutar musik otomatis. Jika tidak terdengar, tekan tombol Putar.</div>
+  </header>
+
+  <main>
+    <section id="cerita" class="panel reveal">
+      <div class="label">01 / tentang 100 streak</div>
+      <h2>Bukan cuma soal api kecil itu.</h2>
+      <p class="copy">Seratus streak mungkin terlihat sederhana. Isinya pun hal-hal kecil: saling mengirim video, kadang video kucing yang random, kadang sesuatu yang bikin senyum sebentar di tengah hari yang sibuk. Buatku, hal sederhana seperti itu cukup menyenangkan untuk dirayakan.</p>
+      <div class="ornament">✦ ✧ ♡ ✧ ✦</div>
+      <p class="copy">Halaman ini bukan permintaan atau harapan yang harus kamu balas. Aku cuma ingin merayakan momen kecil ini dengan cara yang sedikit berbeda. Semoga kamu bisa menikmatinya sebagai hadiah sederhana, tanpa beban apa pun.</p>
+    </section>
+
+    <section class="panel reveal">
+      <div class="label">02 / dua potongan kenangan</div>
+      <h2>Padang dan Payakumbuh.</h2>
+      <p class="muted">Ada beberapa hari yang mungkin terasa biasa saat dijalani, tetapi tetap punya tempat kecil dalam ingatan. Aku memilih dua foto ini untuk mewakili momen yang menyenangkan.</p>
+      <div class="gallery">
+        <div class="photo">
+          <div class="frame">
+            <img src="./foto/padang.jpg" alt="Foto bersama di Padang" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+            <div class="placeholder"><strong>☼</strong>Tambahkan foto di Padang<br><small>foto/padang.jpg</small></div>
+          </div>
+          <div class="caption"><b>Padang</b>Salah satu hari yang baik untuk dikenang.</div>
+        </div>
+        <div class="photo">
+          <div class="frame">
+            <img src="./foto/payakumbuh.jpg" alt="Foto bersama di Payakumbuh" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+            <div class="placeholder"><strong>♡</strong>Tambahkan foto di Payakumbuh<br><small>foto/payakumbuh.jpg</small></div>
+          </div>
+          <div class="caption"><b>Payakumbuh</b>Potongan cerita dari perjalanan yang pernah dilewati.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="label">03 / doa-doa baik</div>
+      <h2>Semoga Allah selalu memudahkan langkahmu.</h2>
+      <p class="copy">Ada hal-hal baik yang kadang cukup disampaikan sebagai doa. Jadi, di halaman kecil ini aku ingin mendoakan beberapa hal baik untukmu.</p>
+      <div class="prayer-grid">
+        <div class="prayer"><div class="symbol">🌿</div><h3>Untuk hatimu</h3><p>Semoga Allah memberi ketenangan di saat pikiran terasa penuh, melapangkan hati saat ada hal yang berat, dan menjaga kamu tetap kuat tanpa harus selalu terlihat kuat.</p></div>
+        <div class="prayer"><div class="symbol">📚</div><h3>Untuk kuliah dan cita-cita</h3><p>Semoga setiap usaha dan lelahmu dalam belajar diberi hasil yang baik. Semoga urusan akademik, organisasi, dan rencana masa depanmu dimudahkan satu per satu.</p></div>
+        <div class="prayer"><div class="symbol">☁️</div><h3>Untuk hari-harimu</h3><p>Semoga kamu selalu dipertemukan dengan orang-orang yang tulus, lingkungan yang baik, dan hal-hal sederhana yang membuatmu tersenyum saat hari terasa panjang.</p></div>
+        <div class="prayer"><div class="symbol">🤍</div><h3>Untuk langkah ke depan</h3><p>Semoga Allah menjaga kamu dalam setiap perjalanan, menuntun pilihanmu menuju kebaikan, dan menjadikan hal yang sedang kamu perjuangkan membawa manfaat serta keberkahan.</p></div>
+      </div>
+      <div class="ornament">♡ ✧ ♡</div>
+      <p class="quote">“Semoga apa pun yang sedang kamu usahakan, dalam diam maupun yang belum sempat kamu ceritakan kepada siapa pun, <em>Allah mudahkan jalannya dan cukupkan kekuatanmu.</em>”</p>
+    </section>
+
+    <section class="panel reveal">
+      <div class="label">04 / sebuah ucapan kecil</div>
+      <h2>Terima kasih untuk cerita yang pernah ada.</h2>
+      <p class="copy">Terima kasih untuk momen, cerita, dan tawa yang pernah dibagikan. Aku menghargai semuanya sebagai bagian baik dari perjalanan kita. Aku juga menghargai ruang dan batasan yang kamu butuhkan, jadi halaman ini cukup menjadi ucapan kecil—tanpa perlu ada jawaban atau balasan khusus.</p>
+    </section>
+  </main>
+
+  <div class="end reveal">
+    <div class="flower">🌷</div>
+    <h2>Sampai di angka 100.</h2>
+    <p>Semoga streak-nya berlanjut selama masih terasa menyenangkan. Kalau suatu saat apinya padam, tidak apa-apa juga. Semoga hal-hal baik yang pernah ada tetap bisa dikenang dengan senyum, tanpa harus menjadi beban bagi siapa pun.</p>
+    <p class="muted">Semoga Allah selalu menjaga dan memudahkan langkahmu, Retno.</p>
+    <div class="signature">dibuat dengan niat baik ♡</div>
+  </div>
+  <footer>100 streak 🔥 · sebuah halaman kecil untuk Retno</footer>
+</div>
+
+<button class="heart-button" id="heartButton" aria-label="Tampilkan pesan kecil" title="Pesan kecil">♡</button>
+<div id="littleNote" role="status">Semoga hari ini ada satu hal kecil yang membuatmu tersenyum. 🌷</div>
+
+<script>
+/* Floating petals and hearts: decorative only, no external libraries. */
+const sky=document.getElementById('sky');
+const symbols=['♡','✧','✦','❀','·'];
+for(let i=0;i<19;i++){
+ const el=document.createElement('span');
+ el.className='floaty';
+ el.textContent=symbols[i%symbols.length];
+ el.style.left=(Math.random()*100)+'%';
+ el.style.setProperty('--dur',(10+Math.random()*13)+'s');
+ el.style.setProperty('--delay',(-Math.random()*20)+'s');
+ el.style.setProperty('--size',(12+Math.random()*16)+'px');
+ el.style.setProperty('--drift',(-35+Math.random()*70)+'px');
+ sky.appendChild(el);
+}
+const reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.12});
+ reveals.forEach(el=>obs.observe(el));
+}else{reveals.forEach(el=>el.classList.add('visible'))}
+const button=document.getElementById('heartButton');
+const note=document.getElementById('littleNote');
+button.addEventListener('click',()=>{
+ note.classList.add('show');
+ button.textContent='♥';
+ setTimeout(()=>{note.classList.remove('show');button.textContent='♡'},3600);
+});
+
+/* Local MP3 player: attempt autoplay, then offer a clear manual fallback. */
+const music=document.getElementById('backgroundMusic');
+const musicToggle=document.getElementById('musicToggle');
+const musicStatus=document.getElementById('musicStatus');
+const musicVolume=document.getElementById('musicVolume');
+music.volume=Number(musicVolume.value);
+function syncMusicButton(){
+ const playing=!music.paused;
+ musicToggle.textContent=playing?'Ⅱ Jeda':'▶ Putar';
+ musicToggle.setAttribute('aria-label',playing?'Jeda musik':'Putar musik');
+}
+musicToggle.addEventListener('click',async()=>{
+ if(music.paused){
+  try{await music.play();musicStatus.textContent='Musik sedang diputar.'}
+  catch(err){musicStatus.textContent='Musik belum dapat diputar. Pastikan file MP3 ada di sebelah index.html.'}
+ }else{music.pause();musicStatus.textContent='Musik dijeda.'}
+ syncMusicButton();
+});
+musicVolume.addEventListener('input',()=>{music.volume=Number(musicVolume.value)});
+music.addEventListener('playing',()=>{musicStatus.textContent='Musik sedang diputar.';syncMusicButton()});
+music.addEventListener('pause',syncMusicButton);
+music.addEventListener('error',()=>{musicStatus.textContent='File musik tidak ditemukan. Letakkan sau-tat-ca-harmonica.mp3 di folder yang sama dengan index.html.';syncMusicButton()});
+window.addEventListener('load',async()=>{
+ try{await music.play();musicStatus.textContent='Musik sedang diputar.'}
+ catch(err){musicStatus.textContent='Browser memblokir autoplay. Tekan Putar untuk mendengarkan musik.'}
+ syncMusicButton();
+});
+</script>
+</body>
+</html>
